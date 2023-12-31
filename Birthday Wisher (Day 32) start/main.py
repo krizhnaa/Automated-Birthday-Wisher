@@ -1,15 +1,14 @@
-import smtplib
 
-my_mail = "krizhnatester@gmail.com"
-password = ""
+import datetime as dt
 
-with smtplib.SMTP("smtp.gmail.com") as connection:
-    connection.starttls()
-    connection.login(user=my_mail, password=password)
-    connection.sendmail(
-        from_addr=my_mail,
-        to_addrs="",
-        msg="Heyy"
-    )
+now = dt.datetime.now()
+year = now.year
+month = now.month
+day = now.day
+hour = now.hour
+minute = now.minute
+if minute == 11:
+    print(minute)
+
 
 
