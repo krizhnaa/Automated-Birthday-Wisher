@@ -7,18 +7,19 @@ my_mail = "krizhnatester@gmail.com"
 password = ""
 
 now = dt.datetime.now()
-curr_month = now.month
-curr_day = now.day
+today_tuple = (now.month, now.day)
 
 df = pd.read_csv("birthdays.csv")
+dict = {(data_row["month"], data_row["day"]): data_row for (index, data_row) in df.iterrows()}
 
 try:
-    if df[df['month'] == curr_month ]['month'].item() and df[df['day'] == curr_day ]['day'].item():
-        name = df[df['month'] == curr_month ]['name'].item()
+    if today_tuple in dict:
+        name = dict[today_tuple].get('name')
 
         with open(f"letter_templates/letter_{random.randint(1, 3)}.txt", "r+") as file:
             content = file.read()
             content = content.replace('[NAME]', f"{name}")
+
 
         with smtplib.SMTP("smtp.gmail.com") as connection:
             connection.starttls()
