@@ -21,3 +21,7 @@ if day_of_week == 6:
             to_addrs="",
             msg=f"Subject:Sunday Motivation\n\n{rand_quotes}"
         )
+
+
+
+
